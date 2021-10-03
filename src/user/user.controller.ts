@@ -31,9 +31,4 @@ export class UserController {
   remove(@Param('id') id: string) {
     return this.userService.remove(+id);
   }
-
-  @Get('/cep/:cepNumber')
-  getCEPInfo(@Param('cepNumber') cepNumber : string){
-    return this.userService.getCEPInfo(cepNumber);
-  }
 }

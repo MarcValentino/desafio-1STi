@@ -5,7 +5,14 @@ import { UpdateUserDto } from './dto/update-user.dto';
 @Injectable()
 export class UserService {
   create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+
+    return `User name: ${createUserDto.name},\n
+            Phone number: ${createUserDto.phoneNumber},\n
+            CEP: ${createUserDto.cep}\n
+            Derived from CEP:\n
+            State: ${createUserDto.state},\n
+            City: ${createUserDto.city},\n
+            Address: ${createUserDto.address}`;
   }
 
   findAll() {
@@ -16,11 +23,15 @@ export class UserService {
     return `This action returns a #${id} user`;
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  update(id: string, updateUserDto: UpdateUserDto) {
+    return `Update requested to #${id}:\n${updateUserDto.name ? `Name: ${updateUserDto.name}\n`: `` }${updateUserDto.address ? `CEP: ${updateUserDto.cep}\n`: `` }${updateUserDto.phoneNumber ? `Phone: ${updateUserDto.phoneNumber}\n`: `` }${updateUserDto.cpf ? `CPF: ${updateUserDto.cpf}\n`: `` }`;
   }
 
   remove(id: number) {
     return `This action removes a #${id} user`;
+  }
+
+  getCEPInfo(cep: string){
+    return `Pesquisar CEP #${cep}`;
   }
 }

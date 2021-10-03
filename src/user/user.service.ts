@@ -24,14 +24,10 @@ export class UserService {
   }
 
   update(id: string, updateUserDto: UpdateUserDto) {
-    return `Update requested to #${id}:\n${updateUserDto.name ? `Name: ${updateUserDto.name}\n`: `` }${updateUserDto.address ? `CEP: ${updateUserDto.cep}\n`: `` }${updateUserDto.phoneNumber ? `Phone: ${updateUserDto.phoneNumber}\n`: `` }${updateUserDto.cpf ? `CPF: ${updateUserDto.cpf}\n`: `` }`;
+    return `Update requested to #${id}:\n${updateUserDto.name ? `Name: ${updateUserDto.name}\n`: `` }${updateUserDto.cep ? `CEP: ${updateUserDto.cep}\n`: `` }${updateUserDto.phoneNumber ? `Phone: ${updateUserDto.phoneNumber}\n`: `` }${updateUserDto.cpf ? `CPF: ${updateUserDto.cpf}\n`: `` }`;
   }
 
   remove(id: number) {
     return `This action removes a #${id} user`;
-  }
-
-  getCEPInfo(cep: string){
-    return `Pesquisar CEP #${cep}`;
   }
 }

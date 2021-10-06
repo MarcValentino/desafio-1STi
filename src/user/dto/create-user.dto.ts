@@ -5,5 +5,6 @@ export class CreateUserDto {
     cep: string;
     state: string;
     city: string;
+    district: string;
     address: string;
 }

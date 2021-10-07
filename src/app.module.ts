@@ -14,15 +14,15 @@ import { CepCache } from './cep/models/cepCache.model'
     CepModule, 
     SequelizeModule.forRoot({
       dialect : 'postgres',
-      host: 'localhost',
-      port: 5000,
+      host: 'postgres-db',
+      port: 5432,
       username: 'postgres',
       password: 'docker',
       database: 'postgres',
       models: [User, CepCache],
       synchronize: true,
       autoLoadModels: true
-    })], //só estabelece a conexão, n cria
+    })],
   controllers: [AppController],
   providers: [AppService],
 })

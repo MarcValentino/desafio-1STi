@@ -35,17 +35,21 @@ export class CepService {
                 const result = JSON.parse(data);
                 console.log(data.toString());
                 if(!result.erro){
-                  resolve(
-                    await this.cepCacheModel.create({
-                      cep: result.cep,
-                      state: result.uf,
-                      city: result.localidade,
-                      district: result.bairro,
-                      address: result.logradouro
-                    })
-                  )
+                  await this.cepCacheModel.create({
+                    cep: cepNumber,
+                    state: result.uf,
+                    city: result.localidade,
+                    district: result.bairro,
+                    address: result.logradouro
+                  }).then(row => 
+                    resolve(row)
+                  ).catch(error => {
+                    resolve({erro : error})
+                  });
+                }else{
+                  resolve({ erro : "Cep não encontrado na base do viacep!"});
                 }
-                resolve(result);
+                
               } else {
                 if(response.statusCode == 400) resolve({ erro : "CEP invalido ou mal formatado"})
               }

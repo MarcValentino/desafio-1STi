@@ -1,0 +1,25 @@
+services:
+
+  1sti-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    links: 
+      - "postgres-db:postgres-db"
+    ports:
+      - '3000:3000'
+    container_name: 1sti-api
+
+  postgres-db:
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports: 
+      - '5000:5432'
+    volumes: 
+      - ./postgres-data:/var/lib/postgresql/data
+    container_name: api-db
+  
+
+# docker run --name postgres-db --network api-database --network-alias postgres-db -e POSTGRES_PASSWORD=docker -p 5000:5432 -d postgres

@@ -17,7 +17,7 @@ import { CepCache } from './cep/models/cepCache.model'
       host: 'postgres-db',
       port: 5432,
       username: 'postgres',
-      password: 'docker',
+      password: 'postgres',
       database: 'postgres',
       models: [User, CepCache],
       synchronize: true,
